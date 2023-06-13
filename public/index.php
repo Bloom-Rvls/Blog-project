@@ -10,5 +10,8 @@ $router->map('GET', '/blog', function() {
 });
 
 $router->map('GET', '/blog/category', function() {
-    require VIEW_PATH.'/views/category/show.php';
+    require VIEW_PATH.'/category/show.php';
 });
+
+$match = $router->match();
+$match['target']();
