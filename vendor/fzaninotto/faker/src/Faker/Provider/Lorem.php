@@ -131,7 +131,7 @@ class Lorem extends \Faker\Provider\Base
             $nbSentences = self::randomizeNbElements($nbSentences);
         }
 
-        return join(static::sentences($nbSentences), ' ');
+        return join(static::sentences($nbSentences), " ");
     }
 
     /**
@@ -205,7 +205,7 @@ class Lorem extends \Faker\Provider\Base
             }
         }
 
-        return join($text, '');
+        return join($text, ' ');
     }
 
     protected static function randomizeNbElements($nbElements)
