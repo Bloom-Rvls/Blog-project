@@ -16,7 +16,7 @@ $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
 $posts = [];
 $categories = [];
 for ($i=0; $i < 50 ; $i++) { 
-    $pdo->exec("INSERT INTO post SET name='Article #$i', slug='article-$i', content='lorem ipsum dolor', created_at='2023-06-21 18:00:00'");
+    $pdo->exec("INSERT INTO post SET name='Article #$i', slug='article-$i', content='Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sapiente qui doloremque commodi veritatis quisquam ducimus. Unde animi tempore quibusdam aut, sapiente et, sed in a totam, eum sequi cum porro?', created_at='2023-06-21 18:00:00'");
     $posts[] = $pdo->lastInsertId();
 }
 
@@ -33,3 +33,4 @@ foreach($posts as $post) {
 
 $password = password_hash('admin', PASSWORD_BCRYPT);
 $pdo->exec("INSERT INTO user SET username='admin', password='$password'");
+
