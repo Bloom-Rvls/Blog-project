@@ -17,16 +17,7 @@ use App\Model\Post;
 <div class="row">
     <?php foreach($posts as $post): ?>
         <div class="col-md-3">
-            <div class="card m-2">
-                <div class="card-body">
-                    <h5 class="card-title"><?= htmlentities($post->getName())?></h5>
-                    <p class="text-muted"><?= $post->getCreatedAt()->format('d F Y') ?></p>
-                    <p class="card-text"><?= $post->getExcerpt() ?></p>
-                    <p class="card-text">
-                        <a href="#" class="btn btn-primary">voir plus</a>
-                    </p>
-                </div>
-            </div>
+            <?php require 'card.php'; ?>
         </div>
     <?php endforeach; ?>
 </div>
