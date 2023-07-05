@@ -1,8 +1,7 @@
 <?php
+use App\Connection;
 
-$pdo = new PDO('mysql:host=localhost:3306;dbname=blog;charset=utf8','root','',[
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION 
-]);
+$pdo = Connection::getPDO();
 
 //ignore les clés étrangères
 $pdo->exec('SET FOREIGN_KEY_CHECKS = 0');
