@@ -1,6 +1,6 @@
 <div class="card m-2">
     <div class="card-body">
-        <h5 class="card-title"><?= htmlentities($post->getName())?></h5>
+        <h5 class="card-title"><?= e($post->getName())?></h5>
         <p class="text-muted"><?= $post->getCreatedAt()->format('d F Y') ?></p>
         <p class="card-text"><?= $post->getExcerpt() ?></p>
         <p class="card-text">
