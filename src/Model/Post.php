@@ -11,7 +11,7 @@ class Post {
     private $name;
     private $content;
     private $created_at;
-    private $categories = [];
+    private $category;
 
     public function getName(): ?string
     {
@@ -44,5 +44,10 @@ class Post {
     public function getID(): ?int
     {
         return $this->id;
+    }
+
+    public function addCategory(Category $category): void
+    {
+        $this->category = $category;
     }
 }
