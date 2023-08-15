@@ -2,6 +2,7 @@
 namespace App\Table;
 
 use App\Model\Category;
+use App\Table\Exception\NotFoundException;
 
 class CategoryTable extends Table {
 
@@ -12,7 +13,7 @@ class CategoryTable extends Table {
         $query->setFetchMode(\PDO::FETCH_CLASS, Category::class);
         $result = $query->fetch();
         if ($result === false) {
-
+            throw new NotFoundException('category', $id);
         }
 
         return $result;

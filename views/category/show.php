@@ -13,10 +13,6 @@ $pdo = Connection::getPDO();
 $categoryTable = new CategoryTable($pdo);
 $category = $categoryTable->find($id);
 
-if($category === false) {
-    throw new Exception('Aucune categorie ne correspond à cet ID');
-}
-
 if($category->getSlug() !== $slug) {
     $url = $router->url('category', ['slug' => $category->getSlug(), 'id' => $id]);
     http_response_code(301);
