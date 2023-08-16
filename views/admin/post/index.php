@@ -1,6 +1,10 @@
 <?php
+
+use App\Auth;
 use App\Connection;
 use App\Table\PostTable;
+
+Auth::check();
 
 $title = "Administration";
 $pdo = Connection::getPDO();
