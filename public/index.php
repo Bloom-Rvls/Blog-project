@@ -28,7 +28,10 @@ $router = new Router(dirname(__DIR__).'/views');
 $router->get('/', 'post/index', 'home')//(url, view, url_name)
         ->get('/blog/category/[*:slug]-[i:id]', 'category/show', 'category')
         ->get('/blog/[*:slug]-[i:id]', 'post/show', 'post')
-        ->get('/admin', 'admin/post/index', 'admin_post')
+        ->get('/admin', 'admin/post/index', 'admin_posts')
+        ->get('/admin/post/[i:id]', 'admin/post/edit', 'admin_post')
+        ->get('/admin/post/[i:id]/delete', 'admin/post/delete', 'admin_post_delete')
+        ->get('/admin/post/new', 'admin/post/new', 'admin_post_new')
         ->run();
 
 
