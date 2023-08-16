@@ -10,14 +10,25 @@ $link = $router->url('admin_posts');
 
 ?>
 
+<?php if(isset($_GET['delete'])): ?>
+    <div class="alert alert-success">
+        L'enregistrement à bien été supprimer
+    </div>
+<?php endif; ?>
+
 <table class="table">
     <thead>
+        <th>#</th>
         <th>Titre</th>
         <th>Actions</th>
     </thead>
     <tbody>
         <?php foreach($posts as $post): ?>
             <tr>
+                <td>
+                    #
+                    <?= e($post->getID())?>
+                </td>
                 <td>
                     <a href="<?= $router->url('admin_post', ['id' => $post->getID()])?>">
                         <?= e($post->getName()) ?>
