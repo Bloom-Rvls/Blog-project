@@ -3,6 +3,7 @@
 use App\Connection;
 use App\Table\PostTable;
 use App\Validator;
+use App\HTML\Form;
 
 $pdo = Connection::getPDO();
 $postTable = new PostTable($pdo);
@@ -14,8 +15,8 @@ $errors = [];
 if(!empty($_POST)) {
      Validator::lang('fr');
      $v = new Validator($_POST);
-     $v->rule('required', 'name');  
-     $v->rule('lengthBetween', 'name', 3, 200);
+     $v->rule('required', ['name', 'slug']);  
+     $v->rule('lengthBetween', ['name', 'slug'], 3, 200);
      $post->setName($_POST['name']);
      if($v->validate()) {
           $postTable->update($post);
@@ -25,6 +26,7 @@ if(!empty($_POST)) {
      }
 }
 
+$form = new Form($post, $errors);
 ?>
 
 <?php if($success): ?>
@@ -42,15 +44,10 @@ if(!empty($_POST)) {
 <h1>Modifier l'article <?= e($post->getName()) ?></h1>
 
 <form action="" method="post">
-     <div class="form-group">
-          <label for="name">Titre</label>
-          <input type="text" class="form-control <?= isset($errors['name']) ? 'is-invalid' : '' ?>" name="name" value="<?= e($post->getName()) ?>">
-          <?php if(isset($errors['name'])): ?>
-               <div class="invalid-feedbdack text-danger">
-                   <?= implode('<br>', $errors['name']) ?>
-               </div>
-          <?php endif; ?>
-     </div>
+     <?= $form->input('name', 'Titre') ?>
+     <?= $form->input('slug', 'URL') ?>
+     <?= $form->textarea('content', 'Contenu') ?>
+     <?= $form->input('created_at', 'Date de creation') ?>
      <button class="btn btn-primary mt-3">Modifier</button>
 
 </form>
