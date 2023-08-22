@@ -17,7 +17,12 @@ if(!empty($_POST)) {
      $v = new Validator($_POST);
      $v->rule('required', ['name', 'slug']);  
      $v->rule('lengthBetween', ['name', 'slug'], 3, 200);
-     $post->setName($_POST['name']);
+     $post
+          ->setName($_POST['name'])
+          ->setContent($_POST['content'])
+          ->setSlug($_POST['slug'])
+          ->setCreatedAt($_POST['created_at']);
+          
      if($v->validate()) {
           $postTable->update($post);
           $success = true;
