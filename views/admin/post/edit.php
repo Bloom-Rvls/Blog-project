@@ -15,7 +15,7 @@ $errors = [];
 
 if(!empty($_POST)) {
      Validator::lang('fr');
-     $v = new PostValidator($_POST);
+     $v = new PostValidator($_POST, $postTable, $post->getID());
      $post
           ->setName($_POST['name'])
           ->setContent($_POST['content'])
