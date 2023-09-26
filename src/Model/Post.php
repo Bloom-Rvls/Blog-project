@@ -24,7 +24,7 @@ class Post {
         return $this;
     }
 
-    public function getContent(): string
+    public function getContent(): ?string
     {
         return $this->content;
     }
@@ -73,6 +73,12 @@ class Post {
     public function getID(): ?int
     {
         return $this->id;
+    }
+
+    public function setID(int $id): self //retourne l'objet courant
+    {
+        $this->id = $id;
+        return $this;
     }
 
     public function addCategory(Category $category): void
